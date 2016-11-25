@@ -21,7 +21,7 @@ public class StartRandomSpin : MonoBehaviour {
     // Gets individual random float between hard coded min and max values
     float GetRandomFloat()
     {
-        double min = 0;
+        double min = -5;
         double max = 5;
         return (float)(min + r.NextDouble() * (max - min));
     }
