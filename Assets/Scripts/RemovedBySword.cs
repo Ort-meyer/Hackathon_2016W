@@ -5,12 +5,15 @@ public class RemovedBySword : MonoBehaviour {
     public float speedHitFactor;
     public float raiseAmount;
     public GameObject destroyObject;
+    
 
     private Vector3 oldPosition;
+    private ScoreCount ScoreScript;
 
     private string whichHand;
     private bool destroyable;
     private AudioSource[] sounds;
+
 	// Use this for initialization
 	void Start () {
         this.destroyable = true;
@@ -22,6 +25,8 @@ public class RemovedBySword : MonoBehaviour {
 
         this.sounds = GetComponents<AudioSource>();
         AudioSource.PlayClipAtPoint(this.sounds[rand].clip, this.transform.position);
+
+        this.ScoreScript = GameObject.Find("Camera (eye)").GetComponent<ScoreCount>();
     }
 	
 	// Update is called once per frame
@@ -41,6 +46,7 @@ public class RemovedBySword : MonoBehaviour {
                 Destroy(explosion, 1);
                 AudioSource.PlayClipAtPoint(this.sounds[2].clip, this.transform.position);
                 Destroy(this.gameObject);
+                this.ScoreScript.addScore();
             }
             else if (collision.gameObject.tag == "Floor" || (collision.gameObject.tag == "FallingObject" && !collision.gameObject.GetComponent<RemovedBySword>().isDestroyable()))
             {

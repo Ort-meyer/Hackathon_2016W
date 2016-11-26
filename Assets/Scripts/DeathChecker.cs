@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 public class DeathChecker : MonoBehaviour {
     GameObject waterObject;
     GameObject drownedText;
+    private GameObject scoreText;
+
     public float maxTimeUnderWater = 0.5f;
     private float timeUnderWater = 0;
 
@@ -12,6 +14,7 @@ public class DeathChecker : MonoBehaviour {
     void Start () {
         waterObject = GameObject.Find("WaterProDaytime");
         drownedText = GameObject.Find("DrownedText");
+        scoreText = GameObject.Find("ScoreText");
 
     }
 
@@ -25,7 +28,11 @@ public class DeathChecker : MonoBehaviour {
             {
                 //Debug.Log("U DED!!");
                 drownedText.GetComponent<MeshRenderer>().enabled = true;
+                scoreText.GetComponent<TextMesh>().text = GameObject.Find("Camera (eye)").GetComponent<ScoreCount>().getScore().ToString();
+                scoreText.GetComponent<MeshRenderer>().enabled = true;
+                
                 GameObject.Find("BoxSpawnerActivator").GetComponent<SpawnerActivation>().enabled = false;
+
                 if (Input.GetKeyDown(KeyCode.R))
                 {
                     SceneManager.LoadScene(1);
