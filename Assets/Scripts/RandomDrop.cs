@@ -4,12 +4,12 @@ using System.Collections;
 public class RandomDrop : MonoBehaviour {
 
     public GameObject cube;
-    public float spawnTimer;
-    public float spawnTimeReductionPerSecond;
-    public float chanceToSpawn;
-    public int maxSpawnAtSameTime;
-    public float forceToApply;
-    public Vector3 forceApplyVector;
+    //public float spawnTimer;
+    //public float spawnTimeReductionPerSecond;
+    //public float chanceToSpawn;
+    //public int maxSpawnAtSameTime;
+    //public float forceToApply;
+    //public Vector3 forceApplyVector;
 
 
     private float width;
@@ -40,27 +40,27 @@ public class RandomDrop : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        this.width = this.transform.localScale.x;
-        this.height = this.transform.localScale.y;
-        this.depth = this.transform.localScale.z;
-        this.posX = this.transform.position.x;
-        this.posY = this.transform.position.y;
-        this.posZ = this.transform.position.z;
-        float chance = (float)random.NextDouble();
-        spawnTimer = spawnTimer - Time.deltaTime * spawnTimeReductionPerSecond;
-        if (chance <= chanceToSpawn)
-        {
-            GameObject newObject = (GameObject)Instantiate(cube, randomObjectPosVector(cube), Quaternion.identity);
-            newObject.GetComponent<Rigidbody>().AddForce(transform.forward*forceToApply, ForceMode.Impulse);
-        }
+        //this.width = this.transform.localScale.x;
+        //this.height = this.transform.localScale.y;
+        //this.depth = this.transform.localScale.z;
+        //this.posX = this.transform.position.x;
+        //this.posY = this.transform.position.y;
+        //this.posZ = this.transform.position.z;
+        //float chance = (float)random.NextDouble();
+        //spawnTimer = spawnTimer - Time.deltaTime * spawnTimeReductionPerSecond;
+        //if (chance <= chanceToSpawn)
+        //{
+        //    GameObject newObject = (GameObject)Instantiate(cube, randomObjectPosVector(cube), Quaternion.identity);
+        //    newObject.GetComponent<Rigidbody>().AddForce(transform.forward*forceToApply, ForceMode.Impulse);
+        //}
 
-        this.timer -= Time.deltaTime;
-        if (this.timer < 0)
-        {
-            GameObject newObject = (GameObject)Instantiate(cube, randomObjectPosVector(cube), Quaternion.identity);
-            newObject.GetComponent<Rigidbody>().AddForce(transform.forward * forceToApply, ForceMode.Impulse);
-            this.timer = spawnTimer;
-        }
+        //this.timer -= Time.deltaTime;
+        //if (this.timer < 0)
+        //{
+        //    GameObject newObject = (GameObject)Instantiate(cube, randomObjectPosVector(cube), Quaternion.identity);
+        //    newObject.GetComponent<Rigidbody>().AddForce(transform.forward * forceToApply, ForceMode.Impulse);
+        //    this.timer = spawnTimer;
+        //}
 
     }
 
@@ -94,5 +94,11 @@ public class RandomDrop : MonoBehaviour {
             }
         }
         Debug.Log("Done");
+    }
+
+    public void LaunchABox(float forceToApply)
+    {
+        GameObject newObject = (GameObject)Instantiate(cube, randomObjectPosVector(cube), Quaternion.identity);
+        newObject.GetComponent<Rigidbody>().AddForce(transform.forward * forceToApply, ForceMode.Impulse);
     }
 }

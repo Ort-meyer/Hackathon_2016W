@@ -2,6 +2,10 @@
 using System.Collections;
 
 public class RemovedBySword : MonoBehaviour {
+    public float speedHitFactor;
+    public float raiseAmount;
+
+    private Vector3 oldPosition;
 
     private string whichHand;
     private bool destroyable;
@@ -12,9 +16,10 @@ public class RemovedBySword : MonoBehaviour {
         int rand = random.Next(2);
         this.whichHand = rand == 1 ? "Left" : "Right";
         this.GetComponentInChildren<MeshRenderer>().material = Resources.Load(this.whichHand) as Material;
-  
-        this.GetComponent<AudioSource>().Play();
-        AudioSource.PlayClipAtPoint(this.GetComponent<AudioSource>().clip, this.transform.position);
+
+
+        AudioSource[] sounds = GetComponents<AudioSource>();
+        AudioSource.PlayClipAtPoint(sounds[rand].clip, this.transform.position);
     }
 	
 	// Update is called once per frame
@@ -22,9 +27,7 @@ public class RemovedBySword : MonoBehaviour {
         oldPosition = this.transform.position;
 	}
 
-    public float speedHitFactor;
 
-    private Vector3 oldPosition;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -38,6 +41,8 @@ public class RemovedBySword : MonoBehaviour {
             {
                 this.destroyable = false;
                 this.GetComponentInChildren<MeshRenderer>().material = Resources.Load("Dead") as Material;
+                GameObject waterObject = GameObject.Find("WaterProDaytime");
+                waterObject.GetComponent<RaiseOverTime>().RaiseWith(raiseAmount);
             }
         }
         // Matrix4x4 swordWorldMat = collision.gameObject.transform.worldToLocalMatrix;
@@ -56,6 +61,7 @@ public class RemovedBySword : MonoBehaviour {
         //    Destroy(this.gameObject);
         //}
     }
+    
 
     public bool isDestroyable()
     {
