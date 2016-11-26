@@ -357,6 +357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedHitFactor: 0
   raiseAmount: 0.1
+  destroyObject: {fileID: 100010, guid: 645413a00f7bd0242bbd6d0e5eb6f439, type: 2}
 --- !u!136 &136000010261068070
 CapsuleCollider:
   m_ObjectHideFlags: 1

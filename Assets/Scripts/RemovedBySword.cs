@@ -4,6 +4,7 @@ using System.Collections;
 public class RemovedBySword : MonoBehaviour {
     public float speedHitFactor;
     public float raiseAmount;
+    public GameObject destroyObject;
 
     private Vector3 oldPosition;
 
@@ -35,6 +36,8 @@ public class RemovedBySword : MonoBehaviour {
         {
             if (collision.gameObject.tag == ("Sword" + this.whichHand))
             {
+                GameObject explosion = (GameObject)Instantiate(destroyObject, transform.position, transform.rotation);
+                Destroy(explosion, 1);
                 Destroy(this.gameObject);
             }
             else if (collision.gameObject.tag == "Floor" || (collision.gameObject.tag == "FallingObject" && !collision.gameObject.GetComponent<RemovedBySword>().isDestroyable()))
