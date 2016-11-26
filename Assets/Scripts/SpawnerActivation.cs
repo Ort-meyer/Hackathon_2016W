@@ -39,7 +39,7 @@ public class SpawnerActivation : MonoBehaviour {
             if (!started)
             {
                 // Enable background sound
-                GameObject.Find("Camera (eye)").GetComponent<AudioSource>().enabled = true;
+                AudioSource.PlayClipAtPoint(GameObject.Find("Camera (eye)").GetComponents<AudioSource>()[0].clip, this.transform.position);
                 started = true;
             }
             launchTimer += Time.deltaTime;

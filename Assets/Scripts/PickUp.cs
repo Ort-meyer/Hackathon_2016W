@@ -6,16 +6,19 @@ public class PickUp : MonoBehaviour {
     public GameObject leftHand;
     public GameObject rightHand;
     public GameObject eye;
+
     public float grabDistance;
     public GameObject destroyObject;
     private SteamVR_Controller.Device LeftController;
     private SteamVR_Controller.Device RightController;
     private bool dropped = false;
     private bool firstGlance = false;
+    private AudioSource[] sounds;
     // Use this for initialization
     void Start () {
         LeftController = SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Leftmost));
         RightController = SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost));
+        sounds = eye.GetComponents<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -28,6 +31,7 @@ public class PickUp : MonoBehaviour {
             if (Mathf.Abs(angle) > 0.7f)
             {
                 Debug.Log("FirstGlance!");
+                AudioSource.PlayClipAtPoint(this.sounds[2].clip, this.transform.position);
                 firstGlance = true;
             }
         }
@@ -37,13 +41,12 @@ public class PickUp : MonoBehaviour {
         RightController = SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost));
         if (LeftController.GetPress(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger))
         {
-            Debug.Log("Pressed left trigger " + (leftHand.transform.position - transform.position).magnitude);
             
             if ((leftHand.transform.position - transform.position).magnitude < grabDistance)
             {
                 if (dropped == false)
                 {
-                    // Play pickup sound
+                    AudioSource.PlayClipAtPoint(this.sounds[1].clip, this.transform.position);
                 }
                 dropped = true;
                 transform.parent = leftHand.transform;
@@ -52,12 +55,11 @@ public class PickUp : MonoBehaviour {
         }
         else if (RightController.GetPress(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger))
         {
-            Debug.Log("Pressed right trigger " + (rightHand.transform.position - transform.position).magnitude);
             if ((rightHand.transform.position - transform.position).magnitude < grabDistance)
             {
                 if (dropped == false)
                 {
-                    // Play pickup sound
+                    AudioSource.PlayClipAtPoint(this.sounds[1].clip, this.transform.position);
                 }
                 dropped = true;
                 transform.parent = rightHand.transform;
@@ -66,7 +68,7 @@ public class PickUp : MonoBehaviour {
         }
         if (dropped == true)
         {
-            // Play dropped sound
+            
             GameObject.Find("BoxSpawnerActivator").GetComponent<SpawnerActivation>().enabled = true;
             dropped = false;
             GameObject explosion = (GameObject)Instantiate(destroyObject, transform.position, transform.rotation);
