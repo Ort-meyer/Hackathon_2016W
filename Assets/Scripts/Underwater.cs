@@ -35,6 +35,7 @@ public class Underwater : MonoBehaviour
             RenderSettings.fog = true;
             RenderSettings.fogColor = new Color(0, 0.4f, 0.7f, 0.6f);
             RenderSettings.fogDensity = 0.7f;
+            //RenderSettings.fogMode = FogMode.Linear;
             //RenderSettings.skybox = noSkybox;
         }
         else
@@ -42,6 +43,7 @@ public class Underwater : MonoBehaviour
             RenderSettings.fog = defaultFog;
             RenderSettings.fogColor = defaultFogColor;
             RenderSettings.fogDensity = defaultFogDensity;
+            //RenderSettings.fogMode = FogMode.Linear;
             //RenderSettings.skybox = defaultSkybox;
         }
     }
@@ -51,6 +53,7 @@ public class Underwater : MonoBehaviour
         RenderSettings.fog = defaultFog;
         RenderSettings.fogColor = defaultFogColor;
         RenderSettings.fogDensity = defaultFogDensity;
+        //RenderSettings.fogMode = FogMode.Linear;
         //RenderSettings.skybox = defaultSkybox;
     }
 
