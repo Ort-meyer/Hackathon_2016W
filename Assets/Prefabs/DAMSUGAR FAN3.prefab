@@ -281,6 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedHitFactor: 0
+  raiseAmount: 0.1
 --- !u!136 &136000010261068070
 CapsuleCollider:
   m_ObjectHideFlags: 1

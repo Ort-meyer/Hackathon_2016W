@@ -5,9 +5,17 @@ public class SpawnerActivation : MonoBehaviour {
     public Vector3 gravity = new Vector3(0, -1.0f, 0);
     public float startupDelay = 3;
     public float delayBetweenStartups = 0.2f;
-    private float timer;
+    public float secondsBetweenLaunch = 2;
+    public float spawnTimeReductionPerSecond;
+    public float chanceToSpawn;
+    private float startupTimer;
+    private float launchTimer;
     private RandomDrop[] spawners;
     private int numberOfSpawners;
+    public float forceToApply;
+
+    static private System.Random random;
+
     // Use this for initialization
     void Start () {
         // Shouldnt be here, we set a wierd gravity...
@@ -15,21 +23,31 @@ public class SpawnerActivation : MonoBehaviour {
         spawners = GetComponentsInChildren<RandomDrop>();
         numberOfSpawners = spawners.GetLength(0);
         Debug.Log(numberOfSpawners);
+        random = new System.Random();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        timer += Time.deltaTime;
-        if (timer > startupDelay)
+        startupTimer += Time.deltaTime;
+        if (startupTimer > startupDelay)
         {
-            for (int i = 0; i < numberOfSpawners; i++)
-            {
-                if (timer > startupDelay+delayBetweenStartups*i && !spawners[i].isActiveAndEnabled)
-                {
-                    spawners[i].enabled = true;
-                }
-            }
+            launchTimer += Time.deltaTime;
+            float chance = (float)random.NextDouble();
 
+            secondsBetweenLaunch = secondsBetweenLaunch - Time.deltaTime * spawnTimeReductionPerSecond;
+            if (chance <= chanceToSpawn)
+            {
+                int spawnerToLaunchFrom = random.Next(0, numberOfSpawners);
+                spawners[spawnerToLaunchFrom].LaunchABox(forceToApply);
+            }
+            
+            if (launchTimer > secondsBetweenLaunch)
+            {
+                int spawnerToLaunchFrom = random.Next(0, numberOfSpawners);
+                spawners[spawnerToLaunchFrom].LaunchABox(forceToApply);
+                launchTimer = 0;
+            }
         }
-	}
+
+    }
 }
