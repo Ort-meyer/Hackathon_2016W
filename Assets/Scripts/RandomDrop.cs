@@ -51,7 +51,7 @@ public class RandomDrop : MonoBehaviour {
         if (chance <= chanceToSpawn)
         {
             GameObject newObject = (GameObject)Instantiate(cube, randomObjectPosVector(cube), Quaternion.identity);
-            newObject.GetComponent<Rigidbody>().AddForce(transform.forward * forceToApply * -1, ForceMode.Impulse);
+            newObject.GetComponent<Rigidbody>().AddForce(transform.forward*forceToApply, ForceMode.Impulse);
         }
 
         this.timer -= Time.deltaTime;

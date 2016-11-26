@@ -34,6 +34,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010457200112}
+  - 136: {fileID: 136000010261068070}
+  - 54: {fileID: 54000013300193610}
+  - 114: {fileID: 114000012099647038}
+  - 114: {fileID: 114000011254561684}
   m_Layer: 0
   m_Name: DAMSUGAR FAN3
   m_TagString: Untagged
@@ -164,3 +168,54 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013726118472}
   m_Mesh: {fileID: 4300000, guid: 4b4fd6664bc6d3d46ba4cd94af49c504, type: 3}
+--- !u!54 &54000013300193610
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012656688392}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &114000011254561684
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012656688392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1c9b4594f54f8b42ab42fda8e9c0054, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114000012099647038
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012656688392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 511a065d61af4bc42839776186648664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedHitFactor: 0
+--- !u!136 &136000010261068070
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012656688392}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.7
+  m_Height: 4
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: -0.36}

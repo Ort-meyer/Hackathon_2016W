@@ -109,10 +109,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010949066002}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
   m_LocalPosition: {x: 2, y: 1.5, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 0.10000006}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
   m_Children: []
   m_Father: {fileID: 4000012145048470}
   m_RootOrder: 3
@@ -165,10 +165,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012015852376}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 1.5, z: 2}
   m_LocalScale: {x: 2, y: 2, z: 0.1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_Children: []
   m_Father: {fileID: 4000012145048470}
   m_RootOrder: 1
@@ -375,7 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd8640bf1d24eec45b2d6559b82af93f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cube: {fileID: 1000013713544540, guid: 0c0b0282c2b65d747b0b7093b13b6e23, type: 2}
+  cube: {fileID: 1000012656688392, guid: 0c0b0282c2b65d747b0b7093b13b6e23, type: 2}
   spawnTimer: 2
   spawnTimeReductionPerSecond: 0
   chanceToSpawn: 0
@@ -407,7 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd8640bf1d24eec45b2d6559b82af93f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cube: {fileID: 1000013713544540, guid: 0c0b0282c2b65d747b0b7093b13b6e23, type: 2}
+  cube: {fileID: 1000012656688392, guid: 0c0b0282c2b65d747b0b7093b13b6e23, type: 2}
   spawnTimer: 2
   spawnTimeReductionPerSecond: 0
   chanceToSpawn: 0
@@ -425,7 +425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd8640bf1d24eec45b2d6559b82af93f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cube: {fileID: 1000013713544540, guid: 0c0b0282c2b65d747b0b7093b13b6e23, type: 2}
+  cube: {fileID: 1000012656688392, guid: 0c0b0282c2b65d747b0b7093b13b6e23, type: 2}
   spawnTimer: 2
   spawnTimeReductionPerSecond: 0
   chanceToSpawn: 0
@@ -443,7 +443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd8640bf1d24eec45b2d6559b82af93f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cube: {fileID: 1000013713544540, guid: 0c0b0282c2b65d747b0b7093b13b6e23, type: 2}
+  cube: {fileID: 1000012656688392, guid: 0c0b0282c2b65d747b0b7093b13b6e23, type: 2}
   spawnTimer: 2
   spawnTimeReductionPerSecond: 0
   chanceToSpawn: 0
