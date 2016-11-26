@@ -32,7 +32,6 @@ public class RemovedBySword : MonoBehaviour {
         {
             if (collision.gameObject.tag == ("Sword" + this.whichHand))
             {
-
                 Destroy(this.gameObject);
             }
             else if (collision.gameObject.tag == "Floor" || (collision.gameObject.tag == "FallingObject" && !collision.gameObject.GetComponent<RemovedBySword>().isDestroyable()))
