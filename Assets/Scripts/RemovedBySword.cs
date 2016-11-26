@@ -10,6 +10,7 @@ public class RemovedBySword : MonoBehaviour {
 
     private string whichHand;
     private bool destroyable;
+    private AudioSource[] sounds;
 	// Use this for initialization
 	void Start () {
         this.destroyable = true;
@@ -19,8 +20,8 @@ public class RemovedBySword : MonoBehaviour {
         this.GetComponentInChildren<MeshRenderer>().material = Resources.Load(this.whichHand) as Material;
 
 
-        AudioSource[] sounds = GetComponents<AudioSource>();
-        AudioSource.PlayClipAtPoint(sounds[rand].clip, this.transform.position);
+        this.sounds = GetComponents<AudioSource>();
+        AudioSource.PlayClipAtPoint(this.sounds[rand].clip, this.transform.position);
     }
 	
 	// Update is called once per frame
@@ -38,6 +39,7 @@ public class RemovedBySword : MonoBehaviour {
             {
                 GameObject explosion = (GameObject)Instantiate(destroyObject, transform.position, transform.rotation);
                 Destroy(explosion, 1);
+                AudioSource.PlayClipAtPoint(this.sounds[2].clip, this.transform.position);
                 Destroy(this.gameObject);
             }
             else if (collision.gameObject.tag == "Floor" || (collision.gameObject.tag == "FallingObject" && !collision.gameObject.GetComponent<RemovedBySword>().isDestroyable()))
