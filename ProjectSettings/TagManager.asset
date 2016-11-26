@@ -8,6 +8,7 @@ TagManager:
   - SwordLeft
   - SwordRight
   - Floor
+  - FallingObject
   layers:
   - Default
   - TransparentFX

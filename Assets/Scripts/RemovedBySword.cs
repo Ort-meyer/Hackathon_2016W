@@ -24,17 +24,23 @@ public class RemovedBySword : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == ("Sword" + this.whichHand))
+        if (this.destroyable)
         {
-            if (this.destroyable)
+            if (collision.gameObject.tag == ("Sword" + this.whichHand))
             {
+
                 Destroy(this.gameObject);
             }
+            else if (collision.gameObject.tag == "Floor" || (collision.gameObject.tag == "FallingObject" && !collision.gameObject.GetComponent<RemovedBySword>().isDestroyable()))
+            {
+                this.destroyable = false;
+                this.GetComponentInChildren<MeshRenderer>().material = Resources.Load("Dead") as Material;
+            }
         }
-        else if(collision.gameObject.tag == "Floor") 
-        {
-            this.destroyable = false;
-            this.GetComponentInChildren<MeshRenderer>().material = Resources.Load("Dead") as Material;
-        }
+    }
+
+    public bool isDestroyable()
+    {
+        return this.destroyable;
     }
 }
