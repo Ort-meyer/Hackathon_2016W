@@ -19,8 +19,12 @@ public class RemovedBySword : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+        oldPosition = this.transform.position;
 	}
+
+    public float speedHitFactor;
+
+    private Vector3 oldPosition;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -37,6 +41,21 @@ public class RemovedBySword : MonoBehaviour {
                 this.GetComponentInChildren<MeshRenderer>().material = Resources.Load("Dead") as Material;
             }
         }
+        // Matrix4x4 swordWorldMat = collision.gameObject.transform.worldToLocalMatrix;
+        // Vector3 swordPos = swordWorldMat.MultiplyPoint3x4(collision.gameObject.transform.position);
+        // Vector3 thisPos = swordWorldMat.MultiplyPoint3x4(this.transform.position);
+        // Vector3 thisOldPos = swordWorldMat.MultiplyPoint3x4(this.oldPosition);
+        // Vector3 thisDispVec = thisPos - thisOldPos;
+        // //float speedHitFactor = 1;
+        // if (swordPos.y < thisDispVec.y)
+        // {
+        //     Destroy(this.gameObject);
+        // }
+
+        //if (collision.relativeVelocity.magnitude > speedHitFactor)
+        //{
+        //    Destroy(this.gameObject);
+        //}
     }
 
     public bool isDestroyable()

@@ -8,6 +8,9 @@ public class RandomDrop : MonoBehaviour {
     public float spawnTimeReductionPerSecond;
     public float chanceToSpawn;
     public int maxSpawnAtSameTime;
+    public float forceToApply;
+    public Vector3 forceApplyVector;
+
 
     private float width;
     private float height;
@@ -29,11 +32,11 @@ public class RandomDrop : MonoBehaviour {
         this.posY = this.transform.position.y;
         this.posZ = this.transform.position.z;
         random = new System.Random();
-        this.timer = this.spawnTimer;
-        
+        this.timer = 0;
+
 
         //testFunc();
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -47,13 +50,15 @@ public class RandomDrop : MonoBehaviour {
         spawnTimer = spawnTimer - Time.deltaTime * spawnTimeReductionPerSecond;
         if (chance <= chanceToSpawn)
         {
-            Instantiate(cube, randomObjectPosVector(cube), Quaternion.identity);
+            GameObject newObject = (GameObject)Instantiate(cube, randomObjectPosVector(cube), Quaternion.identity);
+            newObject.GetComponent<Rigidbody>().AddForce(transform.forward * forceToApply * -1, ForceMode.Impulse);
         }
 
         this.timer -= Time.deltaTime;
         if (this.timer < 0)
         {
-            Instantiate(cube, randomObjectPosVector(cube), Quaternion.identity);
+            GameObject newObject = (GameObject)Instantiate(cube, randomObjectPosVector(cube), Quaternion.identity);
+            newObject.GetComponent<Rigidbody>().AddForce(transform.forward * forceToApply, ForceMode.Impulse);
             this.timer = spawnTimer;
         }
 
@@ -73,7 +78,7 @@ public class RandomDrop : MonoBehaviour {
     Vector3 randomObjectPosVector(GameObject obj)
     {
         float x = this.posX + randomPosition((this.width - obj.transform.localScale.x) / 2.0f);
-        float y = this.posY - 1;
+        float y = this.posY + randomPosition((this.height - obj.transform.localScale.y) / 2.0f);
         float z = this.posZ + randomPosition((this.depth - obj.transform.localScale.z) / 2.0f);
         return new Vector3(x, y, z);
     }
