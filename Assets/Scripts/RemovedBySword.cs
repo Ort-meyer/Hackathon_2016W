@@ -10,6 +10,9 @@ public class RemovedBySword : MonoBehaviour {
         int rand = random.Next(2);
         this.whichHand = rand == 1 ? "Left" : "Right";
         this.GetComponentInChildren<MeshRenderer>().material = Resources.Load(this.whichHand) as Material;
+  
+        this.GetComponent<AudioSource>().Play();
+        AudioSource.PlayClipAtPoint(this.GetComponent<AudioSource>().clip, this.transform.position);
     }
 	
 	// Update is called once per frame
