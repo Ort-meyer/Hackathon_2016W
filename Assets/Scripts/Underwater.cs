@@ -14,7 +14,7 @@ public class Underwater : MonoBehaviour
     private bool defaultFog = false;
     private Color defaultFogColor = new Color(0.5f,0.5f,0.5f,1.0f);
     private float defaultFogDensity = 0.01f;
-    private Material defaultSkybox = RenderSettings.skybox;
+    private Material defaultSkybox;
     private Material noSkybox;
 
     void Start()
@@ -25,6 +25,7 @@ public class Underwater : MonoBehaviour
         //RenderSettings.skybox = defaultSkybox;
         //Set the background color
         //camera.backgroundColor = new Color(0, 0.4f, 0.7f, 1);
+        defaultSkybox = RenderSettings.skybox;
 
     }
 

@@ -13,6 +13,7 @@ public class SpawnerActivation : MonoBehaviour {
     private RandomDrop[] spawners;
     private int numberOfSpawners;
     public float forceToApply;
+    public float minSecondsBetweenLaunch = 0.5f;
 
     static private System.Random random;
 
@@ -33,8 +34,15 @@ public class SpawnerActivation : MonoBehaviour {
         {
             launchTimer += Time.deltaTime;
             float chance = (float)random.NextDouble();
+            if (secondsBetweenLaunch >= minSecondsBetweenLaunch)
+            {
+                secondsBetweenLaunch = secondsBetweenLaunch - Time.deltaTime * spawnTimeReductionPerSecond;
+                if (secondsBetweenLaunch < minSecondsBetweenLaunch)
+                {
+                    secondsBetweenLaunch = minSecondsBetweenLaunch;
+                }
+            }
 
-            secondsBetweenLaunch = secondsBetweenLaunch - Time.deltaTime * spawnTimeReductionPerSecond;
             if (chance <= chanceToSpawn)
             {
                 int spawnerToLaunchFrom = random.Next(0, numberOfSpawners);

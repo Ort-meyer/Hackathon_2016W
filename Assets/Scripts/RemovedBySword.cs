@@ -5,6 +5,7 @@ public class RemovedBySword : MonoBehaviour {
     public float speedHitFactor;
     public float raiseAmount;
     public GameObject destroyObject;
+    public ushort vibrationTime = 1000;
     
 
     private Vector3 oldPosition;
@@ -47,6 +48,16 @@ public class RemovedBySword : MonoBehaviour {
                 AudioSource.PlayClipAtPoint(this.sounds[2].clip, this.transform.position);
                 Destroy(this.gameObject);
                 this.ScoreScript.addScore();
+                SteamVR_Controller.Device controller;
+                if (this.whichHand == "Left")
+                {
+                    controller = SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Leftmost));                  
+                }
+                else
+                {
+                    controller = SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost));
+                }
+                controller.TriggerHapticPulse(vibrationTime);
             }
             else if (collision.gameObject.tag == "Floor" || (collision.gameObject.tag == "FallingObject" && !collision.gameObject.GetComponent<RemovedBySword>().isDestroyable()))
             {
