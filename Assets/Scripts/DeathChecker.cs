@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class DeathChecker : MonoBehaviour {
     GameObject waterObject;
@@ -25,6 +26,10 @@ public class DeathChecker : MonoBehaviour {
                 //Debug.Log("U DED!!");
                 drownedText.GetComponent<MeshRenderer>().enabled = true;
                 GameObject.Find("BoxSpawnerActivator").GetComponent<SpawnerActivation>().enabled = false;
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    SceneManager.LoadScene(1);
+                }
             }
             return;
         }
