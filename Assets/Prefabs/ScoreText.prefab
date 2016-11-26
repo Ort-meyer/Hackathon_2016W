@@ -9,44 +9,44 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1000010669364772}
+  m_RootGameObject: {fileID: 1000010101521832}
   m_IsPrefabParent: 1
---- !u!1 &1000010669364772
+--- !u!1 &1000010101521832
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 4000012156929006}
-  - 23: {fileID: 23000011195814198}
-  - 102: {fileID: 102000010448385456}
+  - 4: {fileID: 4000013985386528}
+  - 23: {fileID: 23000012697126176}
+  - 102: {fileID: 102000014030271382}
   m_Layer: 0
-  m_Name: ScoreText
+  m_Name: ScoreText 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4000012156929006
+--- !u!4 &4000013985386528
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010669364772}
+  m_GameObject: {fileID: 1000010101521832}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.486, y: 2.073, z: -3.574}
+  m_LocalPosition: {x: -0.045, y: 0.473, z: -3.8002}
   m_LocalScale: {x: 0.01, y: 0.01, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!23 &23000011195814198
+--- !u!23 &23000012697126176
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010669364772}
+  m_GameObject: {fileID: 1000010101521832}
   m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -70,19 +70,19 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!102 &102000010448385456
+--- !u!102 &102000014030271382
 TextMesh:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010669364772}
+  m_GameObject: {fileID: 1000010101521832}
   m_Text: 0
   m_OffsetZ: 5
   m_CharacterSize: 10
   m_LineSpacing: 1
-  m_Anchor: 2
-  m_Alignment: 0
+  m_Anchor: 4
+  m_Alignment: 1
   m_TabSize: 4
   m_FontSize: 10
   m_FontStyle: 0
@@ -90,4 +90,4 @@ TextMesh:
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   m_Color:
     serializedVersion: 2
-    rgba: 4294050047
+    rgba: 4278190335
