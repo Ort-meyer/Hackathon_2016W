@@ -14,7 +14,10 @@ public class SpawnerActivation : MonoBehaviour {
     private int numberOfSpawners;
     public float forceToApply;
     public float minSecondsBetweenLaunch = 0.5f;
+    public float maxForceToApply = 6.0f;
+    public float forceIncrementPerSecond = 0.5f;
 
+    private bool started = false;
     static private System.Random random;
 
     // Use this for initialization
@@ -32,6 +35,13 @@ public class SpawnerActivation : MonoBehaviour {
         startupTimer += Time.deltaTime;
         if (startupTimer > startupDelay)
         {
+            // Enable sound once
+            if (!started)
+            {
+                // Enable background sound
+                GameObject.Find("Camera (eye)").GetComponent<AudioSource>().enabled = true;
+                started = true;
+            }
             launchTimer += Time.deltaTime;
             float chance = (float)random.NextDouble();
             if (secondsBetweenLaunch >= minSecondsBetweenLaunch)
@@ -40,6 +50,15 @@ public class SpawnerActivation : MonoBehaviour {
                 if (secondsBetweenLaunch < minSecondsBetweenLaunch)
                 {
                     secondsBetweenLaunch = minSecondsBetweenLaunch;
+                }
+            }
+
+            if (forceToApply <= maxForceToApply)
+            {
+                forceToApply = forceToApply + Time.deltaTime * forceIncrementPerSecond;
+                if (forceToApply > maxForceToApply)
+                {
+                    forceToApply = maxForceToApply;
                 }
             }
 
